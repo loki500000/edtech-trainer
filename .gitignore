@@ -1,0 +1,8 @@
+# Reference repositories (for learning)
+reference-repos/
+
+# General
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
