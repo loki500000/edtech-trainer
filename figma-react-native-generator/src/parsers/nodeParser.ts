@@ -99,7 +99,7 @@ function parseTextStyles(node: TextNode) {
   }
 
   // Font family
-  if (node.fontName !== figma.mixed && typeof node.fontName === 'object') {
+  if (node.fontName && typeof node.fontName === 'object' && 'family' in node.fontName) {
     styles.fontFamily = node.fontName.family;
   }
 
@@ -125,7 +125,7 @@ function parseTextStyles(node: TextNode) {
   }
 
   // Text color
-  if (node.fills !== figma.mixed && Array.isArray(node.fills) && node.fills.length > 0) {
+  if (Array.isArray(node.fills) && node.fills.length > 0) {
     const fill = node.fills[0];
     if (fill.type === 'SOLID' && fill.visible !== false) {
       styles.color = rgbaToHex(fill.color, fill.opacity ?? 1);
@@ -133,7 +133,7 @@ function parseTextStyles(node: TextNode) {
   }
 
   // Text decoration
-  if (node.textDecoration) {
+  if (node.textDecoration && typeof node.textDecoration === 'string') {
     const decorationMap: Record<string, string> = {
       'UNDERLINE': 'underline',
       'STRIKETHROUGH': 'line-through',
@@ -142,7 +142,7 @@ function parseTextStyles(node: TextNode) {
   }
 
   // Text transform
-  if (node.textCase) {
+  if (node.textCase && typeof node.textCase === 'string') {
     const transformMap: Record<string, string> = {
       'UPPER': 'uppercase',
       'LOWER': 'lowercase',

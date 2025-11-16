@@ -11,7 +11,7 @@ export function parseStyles(node: SceneNode): AppearanceStyles {
   const styles: AppearanceStyles = {};
 
   // Background color
-  if ('fills' in node && node.fills !== figma.mixed && Array.isArray(node.fills)) {
+  if ('fills' in node && Array.isArray(node.fills)) {
     const solidFill = node.fills.find(fill => fill.type === 'SOLID' && fill.visible !== false);
     if (solidFill && solidFill.type === 'SOLID') {
       styles.backgroundColor = rgbaToHex(solidFill.color, solidFill.opacity ?? 1);
@@ -19,7 +19,7 @@ export function parseStyles(node: SceneNode): AppearanceStyles {
   }
 
   // Border (stroke)
-  if ('strokes' in node && node.strokes !== figma.mixed && Array.isArray(node.strokes)) {
+  if ('strokes' in node && Array.isArray(node.strokes)) {
     const solidStroke = node.strokes.find(stroke => stroke.type === 'SOLID' && stroke.visible !== false);
     if (solidStroke && solidStroke.type === 'SOLID') {
       styles.borderColor = rgbaToHex(solidStroke.color, solidStroke.opacity ?? 1);

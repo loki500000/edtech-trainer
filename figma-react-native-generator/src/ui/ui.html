@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Figma to React Native</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        background: #fff;
+      }
+
+      .header {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .header h2 {
+        margin: 0 0 4px 0;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .header p {
+        margin: 0;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .controls {
+        margin-bottom: 16px;
+      }
+
+      .control-group {
+        margin-bottom: 12px;
+      }
+
+      .control-group label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      select,
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 13px;
+        background: #fff;
+      }
+
+      select:focus,
+      input:focus {
+        outline: none;
+        border-color: #18a0fb;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: auto;
+      }
+
+      .checkbox-group label {
+        margin: 0;
+        font-weight: normal;
+      }
+
+      .code-preview {
+        margin-bottom: 16px;
+      }
+
+      .code-preview h3 {
+        margin: 0 0 8px 0;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      textarea {
+        width: 100%;
+        height: 350px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 12px;
+        line-height: 1.5;
+        resize: vertical;
+        background: #f8f8f8;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #18a0fb;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      button {
+        flex: 1;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      button.primary {
+        background: #18a0fb;
+        color: #fff;
+      }
+
+      button.primary:hover {
+        background: #0d8ce8;
+      }
+
+      button.primary:active {
+        background: #0b7dd6;
+      }
+
+      button.secondary {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      button.secondary:hover {
+        background: #e0e0e0;
+      }
+
+      button.secondary:active {
+        background: #d0d0d0;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .empty-state {
+        padding: 40px 20px;
+        text-align: center;
+        color: #999;
+      }
+
+      .empty-state-icon {
+        font-size: 48px;
+        margin-bottom: 12px;
+      }
+
+      .empty-state p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .error-message {
+        padding: 12px;
+        margin-bottom: 16px;
+        background: #fee;
+        border: 1px solid #fcc;
+        border-radius: 4px;
+        color: #c33;
+        font-size: 13px;
+      }
+
+      .success-message {
+        padding: 12px;
+        margin-bottom: 16px;
+        background: #efe;
+        border: 1px solid #cfc;
+        border-radius: 4px;
+        color: #3c3;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>Figma to React Native</h2>
+      <p id="status">Select a frame or component to generate code</p>
+    </div>
+
+    <div id="error-container"></div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="styleType">Style System</label>
+        <select id="styleType">
+          <option value="StyleSheet">StyleSheet (default)</option>
+          <option value="styled-components">styled-components</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="componentName">Component Name (optional)</label>
+        <input type="text" id="componentName" placeholder="Auto-generated from layer name" />
+      </div>
+
+      <div class="control-group checkbox-group">
+        <input type="checkbox" id="useTypeScript" checked />
+        <label for="useTypeScript">Use TypeScript</label>
+      </div>
+
+      <div class="control-group checkbox-group">
+        <input type="checkbox" id="exportAssets" />
+        <label for="exportAssets">Export Assets (images, icons)</label>
+      </div>
+    </div>
+
+    <div class="code-preview">
+      <h3>Generated Code</h3>
+      <textarea id="codeOutput" readonly placeholder="Generated code will appear here..."></textarea>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="copyButton" disabled>Copy Code</button>
+      <button class="secondary" id="regenerateButton" disabled>Regenerate</button>
+    </div>
+
+    <script src="ui.js"></script>
+  </body>
+</html>
