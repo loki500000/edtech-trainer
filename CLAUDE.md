@@ -27,38 +27,66 @@ This document serves as a comprehensive guide for AI assistants (like Claude) wo
 ## Project Structure
 
 ### Current State
-This is a new repository. The structure will be updated as the project develops.
+Python Code Visualizer - A web-based tool for visualizing Python code execution step-by-step, similar to Python Tutor.
 
-### Expected Directory Structure
+### Directory Structure
 ```
 edtech-trainer/
-├── src/                    # Source code
-├── tests/                  # Test files
-├── docs/                   # Documentation
-├── config/                 # Configuration files
-├── scripts/                # Build and utility scripts
-├── .github/                # GitHub workflows and templates
-└── CLAUDE.md              # This file
+├── frontend/               # React + TypeScript frontend
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   │   ├── CodeEditor.tsx
+│   │   │   ├── Controls.tsx
+│   │   │   └── VisualizationPanel.tsx
+│   │   ├── types.ts       # TypeScript type definitions
+│   │   ├── App.tsx        # Main application component
+│   │   ├── App.css        # Application styles
+│   │   └── main.tsx       # Application entry point
+│   ├── public/            # Static assets
+│   ├── package.json       # Frontend dependencies
+│   └── vite.config.ts     # Vite configuration
+│
+├── backend/               # Python Flask backend
+│   ├── app.py            # Flask API server
+│   ├── tracer.py         # Code execution tracer
+│   └── requirements.txt  # Python dependencies
+│
+└── CLAUDE.md             # This file
 ```
-
-**Note:** Update this section as directories are created.
 
 ---
 
 ## Technology Stack
 
-### Status: To Be Determined
+### Frontend
+- **Primary Language:** TypeScript
+- **Framework:** React 18
+- **Build Tool:** Vite 6.x
+- **Package Manager:** npm
+- **Code Editor:** Monaco Editor (VS Code's editor component)
+- **HTTP Client:** Axios
+- **Styling:** CSS3 (custom styles, no framework)
 
-When the tech stack is chosen, document:
-- **Primary Language:** (e.g., Python, TypeScript, Java)
-- **Framework:** (e.g., React, Django, Spring Boot)
-- **Database:** (e.g., PostgreSQL, MongoDB)
-- **Build Tools:** (e.g., Webpack, Gradle, Maven)
-- **Testing Framework:** (e.g., Jest, PyTest, JUnit)
-- **Package Manager:** (e.g., npm, pip, cargo)
+### Backend
+- **Primary Language:** Python 3.x
+- **Framework:** Flask 3.0
+- **API:** RESTful API with JSON responses
+- **CORS:** flask-cors for cross-origin requests
+- **Code Execution:** Python's built-in `sys.settrace()` for execution tracing
 
 ### Key Dependencies
-Document major dependencies here as they are added.
+
+**Frontend:**
+- `react` & `react-dom`: UI framework
+- `@monaco-editor/react`: Code editor component
+- `axios`: HTTP client for API calls
+- `typescript`: Type-safe JavaScript
+- `vite`: Build tool and dev server
+
+**Backend:**
+- `Flask`: Web framework
+- `flask-cors`: CORS support
+- `Werkzeug`: WSGI utilities
 
 ---
 
