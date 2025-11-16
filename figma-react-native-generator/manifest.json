@@ -1,0 +1,12 @@
+{
+  "name": "Figma to React Native",
+  "id": "figma-react-native-generator",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "documentAccess": "dynamic-page"
+}
