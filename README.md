@@ -1,6 +1,8 @@
-# Python Code Visualizer
+# EdTech Trainer — Python Code Visualizer
 
-A web-based educational tool that visualizes Python code execution step-by-step, similar to [Python Tutor](https://pythontutor.com). This tool helps students and developers understand how their Python code executes by showing the call stack, variables, heap objects, and program output at each step.
+A web-based educational tool that visualizes Python code execution step-by-step, similar to [Python Tutor](https://pythontutor.com). Helps students and developers understand how Python code executes by showing the call stack, variables, heap objects, and program output at each step.
+
+This repository also includes a **Figma to React Native Generator** plugin (`figma-react-native-generator/`) for converting Figma designs into React Native code.
 
 ![Python Code Visualizer](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![React](https://img.shields.io/badge/React-18-61dafb.svg)
@@ -45,10 +47,16 @@ edtech-trainer/
 │   │   └── App.css                 # Styling
 │   └── package.json
 │
-└── backend/           # Python Flask backend
-    ├── app.py         # Flask API server
-    ├── tracer.py      # Execution tracer
-    └── requirements.txt
+├── backend/           # Python Flask backend
+│   ├── app.py         # Flask API server
+│   ├── tracer.py      # Execution tracer
+│   └── requirements.txt
+│
+└── figma-react-native-generator/  # Figma plugin (bonus tool)
+    ├── manifest.json              # Figma plugin manifest
+    ├── package.json
+    ├── tsconfig.json
+    └── webpack.config.js
 ```
 
 ## Prerequisites
@@ -324,6 +332,30 @@ Future enhancements:
 ## Support
 
 For issues, questions, or suggestions, please open an issue on GitHub.
+
+---
+
+## Figma to React Native Generator (Bonus Tool)
+
+Located in `figma-react-native-generator/`, this is a Figma plugin that converts selected Figma layers into React Native component code.
+
+### Setup
+
+```bash
+cd figma-react-native-generator
+npm install
+npm run build
+```
+
+Then in Figma: **Plugins → Development → Import plugin from manifest** and select `manifest.json`.
+
+### Usage
+
+1. Open a Figma file and select the layers you want to convert
+2. Run the plugin from the Plugins menu
+3. Copy the generated React Native code
+
+---
 
 ## Authors
 
